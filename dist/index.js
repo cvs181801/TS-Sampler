@@ -70,13 +70,46 @@ function addNum(x, y) {
 function showMe(message) {
     console.log(message);
 }
-const AugBookReport = {
+const augBookReport = {
     title: 'Wuthering Heights',
     author: 'Emily Bronte',
     summary: 'A dizzying and romantic novel of a young woman coming of age in a time of love and romantic tension.'
 };
-//you can also add a readonly property to prevent that property from being re-assigned later.
-//AugBookReport.author = "Susan Rice";
+//here we create a new function using the above interface as a sortof constructor.
+const add = (x, y) => x + y;
+const subtract = (x, y) => x - y;
+//Classes.  Classes are used to create objects. any methods in the class will run as soon as we instantiate a new object from the class.
+class Meal {
+    //or any class that is extended from this class
+    constructor(timeOfDay, cuisine, appetizer, mainCourse, savory, sweet) {
+        this.timeOfDay = timeOfDay;
+        this.cuisine = cuisine;
+        this.appetizer = appetizer;
+        this.mainCourse = mainCourse;
+        this.savory = savory;
+        this.sweet = sweet;
+    }
+    begin() { console.log('Bon Apetit!'); }
+}
+const dinner = new Meal('7pm', 'thai', 'spring rolls', 'curry chicken', true, false);
+console.log(dinner);
+class BookReportClass {
+    constructor(rating, title, author, summary) {
+        this.rating = rating;
+        this.title = title;
+        this.author = author;
+        this.summary = summary;
+    }
+    buyOnlineAt() { return 'https://www.amazon.com/Pride-Prejudice-English-Jane-Austen'; }
+}
+class movieReport extends BookReportClass {
+    constructor(rating, title, author, summary, movieTitle) {
+        super(rating, title, author, summary);
+        this.movieTitle = movieTitle;
+    }
+}
+const septMovieReport = new movieReport(9, 'Banana Split', 'Rodney Lala', 'A banana searches for his home', 'All Bananas Go Home');
+console.log(septMovieReport.buyOnlineAt());
 //id = "5"; //will throw err 'type sting not assignable to type number'.
 //can run command tsc --watch filename.ts to view compilation in watch mode in the terminal
 //if you're in development mode, and you don't need to compile yet, you'll see errs in watch mode. 

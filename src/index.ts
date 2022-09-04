@@ -189,8 +189,20 @@ class BookReportClass implements bookReport2 {
         buyOnlineAt() {return 'https://www.amazon.com/Pride-Prejudice-English-Jane-Austen'}
 }
 
+class movieReport extends BookReportClass {
+    movieTitle: string
+    constructor(rating: number, 
+        title: string,
+        author: string,
+        summary: string,
+        movieTitle: string){
+            super(rating,title, author, summary)
+            this.movieTitle = movieTitle
+        }
+}
 
-
+const septMovieReport = new movieReport(9, 'Banana Split', 'Rodney Lala', 'A banana searches for his home', 'All Bananas Go Home')
+console.log(septMovieReport.buyOnlineAt())
 
 //id = "5"; //will throw err 'type sting not assignable to type number'.
 //can run command tsc --watch filename.ts to view compilation in watch mode in the terminal
