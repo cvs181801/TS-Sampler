@@ -102,6 +102,96 @@ function showMe(message: string | number): void { //void indicates there isn't r
     console.log(message)
 }
 
+//Interfaces. similar to the objects we created above. sortof like a constructor..?. can't be used w primitives or unions. mostly for objects
+
+interface bookReport {
+    rating?: number, //the question mark makes this optional, meaning we can choose whether or not to add it when instantiating a new object iwth this interface
+    title: string,
+    readonly author: string,
+    summary: string
+}
+
+const augBookReport: bookReport = {
+    title: 'Wuthering Heights',
+    author: 'Emily Bronte',
+    summary: 'A dizzying and romantic novel of a young woman coming of age in a time of love and romantic tension.'
+}
+
+//you can also add a readonly property to prevent that property from being re-assigned later.
+
+//augBookReport.author = "Susan Rice"; trying to do this will throw an err
+
+//we can also use interfaces w functions 
+interface MathFunc {
+    (x: number, y: number): number //takes in 2 numbers, and returns a number
+}
+//here we create a new function using the above interface as a sortof constructor.
+const add: MathFunc = (x: number, y: number): number => x + y
+const subtract: MathFunc = (x: number, y: number): number => x - y
+
+//Classes.  Classes are used to create objects. any methods in the class will run as soon as we instantiate a new object from the class.
+
+class Meal {
+//by default these are all public, unless you add a different data modifier
+    private timeOfDay: string //private is a data modifier that only allows you to access this property from within the class.
+    //this means you won't be able to re-assign it and you can't even console log it.
+    cuisine: string
+    appetizer: string
+    mainCourse: string
+    savory: boolean
+    protected sweet: boolean //protected is a data modifier that  only allows you to access this property from within this class,
+    //or any class that is extended from this class
+
+    constructor(timeOfDay: string,
+        cuisine: string,
+        appetizer: string,
+        mainCourse: string,
+        savory: boolean,
+        sweet: boolean) {
+            this.timeOfDay = timeOfDay
+            this.cuisine = cuisine
+            this.appetizer = appetizer
+            this.mainCourse = mainCourse
+            this.savory = savory
+            this.sweet = sweet
+        }
+
+    begin(){console.log('Bon Apetit!')}
+}
+
+const dinner = new Meal('7pm','thai','spring rolls','curry chicken', true, false)
+console.log(dinner)
+
+//How to Implement an Interface to a Class
+interface bookReport2 {
+    rating?: number, 
+    title: string,
+    author: string,
+    summary: string,
+    buyOnlineAt(): string
+}
+
+class BookReportClass implements bookReport2 {
+    rating: number
+    title: string
+    author: string
+    summary: string
+    constructor(    
+        rating: number, 
+        title: string,
+        author: string,
+        summary: string){
+          this.rating = rating
+          this.title = title
+          this.author = author
+          this.summary  = summary
+        }
+        buyOnlineAt() {return 'https://www.amazon.com/Pride-Prejudice-English-Jane-Austen'}
+}
+
+
+
+
 //id = "5"; //will throw err 'type sting not assignable to type number'.
 //can run command tsc --watch filename.ts to view compilation in watch mode in the terminal
 //if you're in development mode, and you don't need to compile yet, you'll see errs in watch mode. 

@@ -45,6 +45,38 @@ var Dance3;
     Dance3["Swing"] = "Swing";
 })(Dance3 || (Dance3 = {}));
 console.log(Dance3.Sway);
+//Objects
+const Beavis = {
+    IQ: 5,
+    hairColor: 'blonde'
+};
+const butthead = {
+    IQ: 8,
+    hairColor: 'brown'
+};
+//Type Assertion: tell the compiler to treat an entity as a different type.
+let frosting = 'pink';
+let weddingCakeFrosting = frosting; //OR: frosting as number
+//Functions
+//function addNum(x,y) { 
+//   return x + y
+//}
+///if we have noImplicitAny commented out in ts.config, 
+//there is an error being raised because we did not define what data types for these parameeters.
+//to resolve this we can set NoImplicitAny to false in ts.config or simple define the parameters like the function below...
+function addNum(x, y) {
+    return x + y;
+}
+function showMe(message) {
+    console.log(message);
+}
+const AugBookReport = {
+    title: 'Wuthering Heights',
+    author: 'Emily Bronte',
+    summary: 'A dizzying and romantic novel of a young woman coming of age in a time of love and romantic tension.'
+};
+//you can also add a readonly property to prevent that property from being re-assigned later.
+//AugBookReport.author = "Susan Rice";
 //id = "5"; //will throw err 'type sting not assignable to type number'.
 //can run command tsc --watch filename.ts to view compilation in watch mode in the terminal
 //if you're in development mode, and you don't need to compile yet, you'll see errs in watch mode. 
